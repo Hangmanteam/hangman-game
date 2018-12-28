@@ -1,4 +1,5 @@
 #include "hangman.h"
+#define _WIN32_WINNT 0x0500
 
 hangman::hangman()
 {
@@ -138,9 +139,9 @@ vector<string> hangman::random(string menu)
 
 vector<string> hangman::movies(string menu)
 {
-	ifstream obj("t1.txt");
-	ifstream obj0("t2.txt");
-	ifstream obj1("t3.txt");
+	ifstream obj("Words/t1.txt");
+	ifstream obj0("Words/t2.txt");
+	ifstream obj1("Words/t3.txt");
 	vector<string> randomVec;
 	string str1, str2, str3, st1, st2, st3, string1, string2, string3;
 
@@ -207,9 +208,9 @@ vector<string> hangman::movies(string menu)
 }
 vector<string> hangman::tvs(string menu)
 {
-	ifstream obj("t1.txt");
-	ifstream obj0("t2.txt");
-	ifstream obj1("t3.txt");
+	ifstream obj("Words/t1.txt");
+	ifstream obj0("Words/t2.txt");
+	ifstream obj1("Words/t3.txt");
 	vector<string> randomVec;
 	string str1, str2, str3, st1, st2, st3, string1, string2, string3;
 
@@ -274,9 +275,9 @@ vector<string> hangman::tvs(string menu)
 }
 vector<string> hangman::sport(string menu)
 {
-	ifstream obj("t1.txt");
-	ifstream obj0("t2.txt");
-	ifstream obj1("t3.txt");
+	ifstream obj("Words/t1.txt");
+	ifstream obj0("Words/t2.txt");
+	ifstream obj1("Words/t3.txt");
 	vector<string> randomVec;
 	string str1, str2, str3, st1, st2, st3, string1, string2, string3;
 
@@ -929,7 +930,7 @@ void hangman::gui()
 
 				}
 			}
-/////////////////////////////////////////how to play
+			/////////////////////////////////////////how to play
 			if (menu == "mainmenu")
 			{
 				if (isSpriteHover(b3.getGlobalBounds(), mousePos) == true)
@@ -1042,7 +1043,7 @@ void hangman::gui()
 				{
 					if (evnt.type == Event::MouseButtonPressed && evnt.mouseButton.button == Mouse::Left)
 					{
-          pic7 = "Textures/Buttons/hardclicked.png";
+						pic7 = "Textures/Buttons/hardclicked.png";
 						hardpic.loadFromFile(pic7);
 					}
 					if (evnt.type == Event::MouseButtonReleased &&  evnt.mouseButton.button == Mouse::Left)
@@ -1160,7 +1161,7 @@ void hangman::gui()
 					if (evnt.type == Event::MouseButtonReleased && evnt.mouseButton.button == Mouse::Left)
 					{
 
-						r =random(menu);
+						r = random(menu);
 						categories[0] = r;
 						C = 0;
 						menu = "game";
@@ -1638,7 +1639,9 @@ void hangman::gui()
 
 									for (int i = 0; i < words[0].length(); i++)
 									{
-                  if (words[0][i] == input)
+
+										
+										if (words[0][i] == input)
 										{
 											j = i;
 										
@@ -1796,7 +1799,7 @@ void hangman::gui()
 			window.draw(back2Shape);
 			window.draw(moviesShape);
 			window.draw(sportsShape);
-      window.draw(tvShape);
+			window.draw(tvShape);
 			window.draw(randomShape);
 		}
 		else if (menu == "game")
@@ -1856,6 +1859,3 @@ void hangman::gui()
 		window.display();
 	}
 }
-
-								
-	
